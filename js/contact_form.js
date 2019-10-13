@@ -28,6 +28,7 @@ jQuery(function () {
                     }
                 }
             });
+            console.log("Alguma coisa aconteceu");
             return false;
         }
     })
