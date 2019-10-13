@@ -4,9 +4,9 @@ $name = $_POST['name'];
 $email_address = $_POST['email'];
 $message = $_POST['message'];
 
-$from = 'Demo contact form <demo@domain.com>';
+$from = $email;
 
-$sendTo = 'Demo contact form <demo@domain.com>';
+$sendTo = 'matheusraj5@gmail.com';
 
 $subject = "Novo cliente:  $name";
 
