@@ -353,13 +353,19 @@
         </div>
         <div class="row">
           <div class="col-md-7 mb-5">
-            <form class="contact__form" method="post" action="contact_form.php">
+            <form class="contact__form mb-3" method="post" action="contact_form.php">
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <input name="name" type="text" class="form-control" placeholder="Nome">
+                        <input name="name" type="text" class="form-control" placeholder="Nome" required=""
+                          oninvalid="this.setCustomValidity('Insira seu nome.')"
+                          oninput="setCustomValidity('')"
+                        >
                     </div>
                     <div class="col-md-6 form-group">
-                        <input name="email" type="email" class="form-control" placeholder="Email">
+                        <input name="email" type="email" class="form-control" placeholder="Email" required=""
+                          oninvalid="this.setCustomValidity('Insira seu email.')"
+                          oninput="setCustomValidity('')">
+                        >
                     </div>
                     <div class="col-md-6 form-group">
                         <input name="phone" type="text" class="form-control" placeholder="Telefone">
@@ -368,7 +374,10 @@
                         <input name="subject" type="text" class="form-control" placeholder="Assunto">
                     </div>
                     <div class="col-12 form-group">
-                        <textarea name="message" class="form-control" rows="3" placeholder="Mensagem"></textarea>
+                        <textarea name="message" class="form-control" rows="3" placeholder="Mensagem" required=""
+                          oninvalid="this.setCustomValidity('Insira sua mensagem.')"
+                          oninput="setCustomValidity('')">
+                        ></textarea>
                     </div>
                     <div class="col-12">
                         <input name="submit" type="submit" class="btn btn-primary" value="Enviar Mensagem">
@@ -386,14 +395,14 @@
           <div class="col-md-5">
             
             <div class="p-4 mb-3 bg-white">
-              <p class="mb-0 font-weight-bold">Endereço</p>
-              <p class="mb-4">Avelino dos Santos, 288, Pq São Bento</p>
+              <p class="mb-0 font-weight-bold">Corretor</p>
+              <p class="mb-4">Valdomiro Aparecido Lopes</p>
 
               <p class="mb-0 font-weight-bold">Telefone</p>
-              <p class="mb-4"><a href="#">(15) 99850-0867</a></p>
+              <p class="mb-4"><a href="#">(15) 99178-7243</a></p>
 
               <p class="mb-0 font-weight-bold">Endereço de E-mail</p>
-              <p class="mb-0"><a href="#">matheus.mendes10@fatec.sp.gov.br</a></p>
+              <p class="mb-0"><a href="#">valdomiroaparecidolopes@gmail.com</a></p>
 
             </div>
             
