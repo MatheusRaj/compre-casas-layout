@@ -1,58 +1,36 @@
-function validateForm() {
-    var name =  document.getElementById('name').value;
-    if (name == "") {
-        document.getElementById('status').innerHTML = "Name cannot be empty";
-        return false;
+(function ($) {
+    'use strict';
+    var form = $('.contact__form'),
+        message = $('.contact__msg'),
+        form_data;
+    // Success function
+    function done_func(response) {
+        message.fadeIn().removeClass('alert-danger').addClass('alert-success');
+        message.text(response);
+        setTimeout(function () {
+            message.fadeOut();
+        }, 2000);
+        form.find('input:not([type="submit"]), textarea').val('');
     }
-    var email =  document.getElementById('email').value;
-    if (email == "") {
-        document.getElementById('status').innerHTML = "Email cannot be empty";
-        return false;
-    } else {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if(!re.test(email)){
-            document.getElementById('status').innerHTML = "Email format invalid";
-            return false;
-        }
+    // fail function
+    function fail_func(data) {
+        message.fadeIn().removeClass('alert-success').addClass('alert-success');
+        message.text(data.responseText);
+        setTimeout(function () {
+            message.fadeOut();
+        }, 2000);
     }
-    var subject =  document.getElementById('subject').value;
-    if (subject == "") {
-        document.getElementById('status').innerHTML = "Subject cannot be empty";
-        return false;
-    }
-    var message =  document.getElementById('message').value;
-    if (message == "") {
-        document.getElementById('status').innerHTML = "Message cannot be empty";
-        return false;
-    }
-    document.getElementById('status').innerHTML = "Sending...";
-    document.getElementById('contact-form').submit();
     
-    }
-
-
-    document.getElementById('status').innerHTML = "Sending...";
-formData = {
-'name'     : $('input[name=name]').val(),
-'email'    : $('input[name=email]').val(),
-'subject'  : $('input[name=subject]').val(),
-'message'  : $('textarea[name=message]').val()
-};
-
-
-$.ajax({
-url : "contact_form.php",
-type: "POST",
-data : formData,
-success: function(data, textStatus, jqXHR)
-{
-
-$('#status').text(data.message);
-if (data.code) //If mail was sent successfully, reset the form.
-$('#contact-form').closest('form').find("input[type=text], textarea").val("");
-},
-error: function (jqXHR, textStatus, errorThrown)
-{
-$('#status').text(jqXHR);
-}
-});
+    form.submit(function (e) {
+        e.preventDefault();
+        form_data = $(this).serialize();
+        $.ajax({
+            type: 'POST',
+            url: form.attr('action'),
+            data: form_data
+        })
+        .done(done_func)
+        .fail(fail_func);
+    });
+    
+})(jQuery);
