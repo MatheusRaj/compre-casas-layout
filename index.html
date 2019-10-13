@@ -356,19 +356,25 @@
             <form class="contact__form mb-3" method="post" action="contact_form.php">
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <input name="name" type="text" class="form-control" placeholder="Nome" required>
+                        <input name="name" type="text" class="form-control" placeholder="Nome" required=""
+                        oninvalid="this.setCustomValidity('Insira seu nome.')"
+                        oninput="setCustomValidity('')">
                     </div>
                     <div class="col-md-6 form-group">
-                        <input name="email" type="email" class="form-control" placeholder="Email" required>
+                        <input name="email" type="email" class="form-control" placeholder="Email" required=""
+                        oninvalid="this.setCustomValidity('Insira seu email.')"
+                        oninput="setCustomValidity('')">
                     </div>
                     <div class="col-md-6 form-group">
-                        <input name="phone" type="text" class="form-control" placeholder="Telefone" required>
+                        <input name="phone" type="text" class="form-control" placeholder="Telefone">
                     </div>
                     <div class="col-md-6 form-group">
-                        <input name="subject" type="text" class="form-control" placeholder="Assunto" required>
+                        <input name="subject" type="text" class="form-control" placeholder="Assunto">
                     </div>
                     <div class="col-12 form-group">
-                        <textarea name="message" class="form-control" rows="3" placeholder="Mensagem" required></textarea>
+                        <textarea name="message" class="form-control" rows="3" placeholder="Mensagem" required=""
+                        oninvalid="this.setCustomValidity('Insira sua mensagem.')"
+                        oninput="setCustomValidity('')"></textarea>
                     </div>
                     <div class="col-12">
                         <input name="submit" type="submit" class="btn btn-primary" value="Enviar Mensagem">
