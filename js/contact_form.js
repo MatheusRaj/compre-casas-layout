@@ -3,7 +3,7 @@ jQuery(function () {
 
     form.on('submit', e => {
         if (!e.isDefaultPrevented()) {
-            const url = 'contact.php';
+            const url = 'contact_form.php';
 
             $.ajax({
                 type: "POST",
