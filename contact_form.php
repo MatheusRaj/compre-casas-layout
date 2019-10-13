@@ -22,10 +22,10 @@
     if ($success) {
         # Set a 200 (okay) response code.
         http_response_code(200);
-        echo "Thank You! Your message has been sent.";
+        echo "Seu email foi enviado com sucesso. Logo nossos corretores entrarão em contato com você!";
     } else {
         # Set a 500 (internal server error) response code.
         http_response_code(500);
-        echo "Oops! Something went wrong, we couldn't send your message.";
+        echo "Oops... algo deu errado. Tente novamente mais tarde.";
     }
 ?>
