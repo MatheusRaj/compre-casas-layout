@@ -4,7 +4,7 @@
       empty($_POST['email']) 		||
       empty($_POST['message'])	||
       !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)) {
-         echo "Erro";
+         var_dump("Erro");
          return false;
       }
       
@@ -18,6 +18,6 @@
    $headers = "From: noreply@yourdomain.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
    $headers .= "Reply-To: $email_address";	
    mail($to,$email_subject,$email_body,$headers);
-   echo "Sucesso";
+   var_dump("sucesso");
    return true;			
 ?>
