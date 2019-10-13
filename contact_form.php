@@ -2,17 +2,17 @@
     $mail_to = "matheusraj5@gmail.com";
         
     # Sender Data
-    $subject = $_POST["subject"];
+    $subject = "Mais um cliente do site. Assunto: " . $_POST["subject"];
     $name = $_POST["name"];
     $email = $_POST["email"];
     $phone = $_POST["phone"];
     $message = $_POST["message"];
     
     # Mail Content
-    $content = "Name: $name\n";
+    $content = "Nome do cliente: $name\n";
     $content .= "Email: $email\n\n";
-    $content .= "Phone: $phone\n";
-    $content .= "Message:\n$message\n";
+    $content .= "Telefone: $phone\n";
+    $content .= "Mensagem:\n$message\n";
 
     # email headers.
     $headers = "From: " . $name . "<". $email .">\r\n";
