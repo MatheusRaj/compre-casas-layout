@@ -1,63 +1,45 @@
+$(function () {
 
-$(function()
-{
-    function after_form_submitted(data)
-    {
-        if(data.result == 'success')
-        {
-            $('form#reused_form').hide();
-            $('#success_message').show();
-            $('#error_message').hide();
-        }
-        else
-        {
-            $('#error_message').append('<ul></ul>');
+    // init the validator
+    // validator files are included in the download package
+    // otherwise download from http://1000hz.github.io/bootstrap-validator
 
-            jQuery.each(data.errors,function(key,val)
-            {
-                $('#error_message ul').append('<li>'+key+':'+val+'</li>');
-            });
-            $('#success_message').hide();
-            $('#error_message').show();
+    $('#contact-form').validator();
 
-            //reverse the response on the button
-            $('button[type="button"]', $form).each(function()
-            {
-                $btn = $(this);
-                label = $btn.prop('orig_label');
-                if(label)
+
+    // when the form is submitted
+    $('#contact-form').on('submit', function (e) {
+
+        // if the validator does not prevent form submit
+        if (!e.isDefaultPrevented()) {
+            var url = "contact.php";
+
+            // POST values in the background the the script URL
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: $(this).serialize(),
+                success: function (data)
                 {
-                    $btn.prop('type','submit' );
-                    $btn.text(label);
-                    $btn.prop('orig_label','');
+                    // data = JSON object that contact.php returns
+
+                    // we recieve the type of the message: success x danger and apply it to the 
+                    var messageAlert = 'alert-' + data.type;
+                    var messageText = data.message;
+
+                    // let's compose Bootstrap alert box HTML
+                    var alertBox = '<div class="alert ' + messageAlert + ' alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' + messageText + '</div>';
+                    
+                    // If we have messageAlert and messageText
+                    if (messageAlert && messageText) {
+                        // inject the alert to .messages div in our form
+                        $('#contact-form').find('.messages').html(alertBox);
+                        // empty the form
+                        $('#contact-form')[0].reset();
+                    }
                 }
             });
-
-        }//else
-    }
-
-	$('#reused_form').submit(function(e)
-      {
-        e.preventDefault();
-
-        $form = $(this);
-        //show some response on the button
-        $('button[type="submit"]', $form).each(function()
-        {
-            $btn = $(this);
-            $btn.prop('type','button' );
-            $btn.prop('orig_label',$btn.text());
-            $btn.text('Sending ...');
-        });
-
-
-                    $.ajax({
-                type: "POST",
-                url: 'contact_form.php',
-                data: $form.serialize(),
-                success: after_form_submitted,
-                dataType: 'json'
-            });
-
-      });
+            return false;
+        }
+    })
 });
