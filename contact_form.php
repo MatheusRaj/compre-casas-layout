@@ -1,5 +1,5 @@
 <?php
-    $mail_to = "matheusraj5@gmail.com";
+    $mail_to = "matheus.mendes@eduzz.com";
         
     # Sender Data
     $subject = "Mais um cliente do site. Assunto: " . $_POST["subject"];
