@@ -1718,10 +1718,9 @@ h1, h2, h3, h4, h5,
   background-size: cover;
   background-position: center;
 }
-
-@media screen and (max-width: 1024px) {
-
+/* 
+@media screen and (min-width: 1024px) {
   #whatswidget-pre-wrapper {
     display: none;
   }
-}
+} */
