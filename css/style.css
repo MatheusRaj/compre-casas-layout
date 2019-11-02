@@ -22,7 +22,7 @@ a {
 
 h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
-  font-family: "Playfair Display", serif; }
+  font-family: "Roboto", serif; }
 
 .border-2 {
   border-width: 2px; }
@@ -1717,4 +1717,11 @@ h1, h2, h3, h4, h5,
 .modal-img {
   background-size: cover;
   background-position: center;
+}
+
+@media screen and (max-width: 1024px) {
+
+  #whatswidget-pre-wrapper {
+    display: none;
+  }
 }
